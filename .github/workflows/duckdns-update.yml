@@ -1,16 +1,11 @@
-name: Actualizar DuckDNS
-
-on:
-  push:
-    branches:
-      - main # Cambia esto si tu rama principal se llama diferente
-  workflow_dispatch: # Permite ejecutar el flujo manualmente desde GitHub
-
-jobs:
-  update-dns:
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Enviar señal de actualización a DuckDNS
+      env:
+        DOMAIN: ${{ secrets.DUCKDNS_DOMAIN }}
+        TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
       run: |
-        curl -s "https://duckdns.org{{ secrets.DUCKDNS_DOMAIN }}&token=${{ secrets.DUCKDNS_TOKEN }}&ip="
+        # Eliminamos posibles espacios en blanco o saltos de línea accidentales
+        CLEAN_DOMAIN=$(echo "$DOMAIN" | tr -d '[:space:]')
+        CLEAN_TOKEN=$(echo "$TOKEN" | tr -d '[:space:]')
+        
+        # Ejecutamos el curl con la URL limpia y entre comillas simples
+        curl -s "https://duckdns.org{CLEAN_DOMAIN}&token=${CLEAN_TOKEN}"
