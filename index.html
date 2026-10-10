@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NØVRA SHOP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#050505;
+font-family:Poppins,sans-serif;
+color:white;
+overflow-x:hidden;
+
+}
+
+body::-webkit-scrollbar{
+width:8px;
+}
+
+body::-webkit-scrollbar-thumb{
+
+background:#ff003c;
+border-radius:20px;
+
+}
+
+a{
+
+text-decoration:none;
+color:white;
+
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+button{
+cursor:pointer;
+font-family:Poppins,sans-serif;
+border:none;
+}
+
+section{
+
+padding:90px 8%;
+
+}
+
+/*==========================
+LOADER
+==========================*/
+
+#loader{
+
+position:fixed;
+width:100%;
+height:100%;
+background:#050505;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+
+}
+
+.loaderLogo{
+
+font-size:55px;
+font-family:Orbitron,sans-serif;
+font-weight:800;
+letter-spacing:5px;
+color:#ff003c;
+animation:pulse 1.5s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+
+}
+
+/*==========================
+NAVBAR
+==========================*/
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.88);
+backdrop-filter:blur(12px);
+z-index:9999;
+transition:.4s;
+
+}
+
+.logo{
+
+font-size:34px;
+font-family:Orbitron,sans-serif;
+font-weight:800;
+color:white;
+letter-spacing:4px;
+
+}
+
+.logo span{
+
+color:#ff003c;
+
+}
+
+nav{
+
+display:flex;
+gap:35px;
+
+}
+
+nav a{
+
+font-weight:500;
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ff003c;
+
+}
+
+.rightMenu{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+}
+
+.cartBtn{
+
+background:#ff003c;
+padding:10px 18px;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
+
+}
+
+.cartBtn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.menuBtn{
+
+display:none;
+font-size:32px;
+cursor:pointer;
+
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media(max-width:900px){
+
+nav{
+
+position:absolute;
+top:80px;
+left:-100%;
+background:#111;
+width:100%;
+flex-direction:column;
+padding:30px;
+transition:.4s;
+
+}
+
+nav.active{
+
+left:0;
+
+}
+
+.menuBtn{
+
+display:block;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="loader">
+
+<div class="loaderLogo">
+NØVRA
+</div>
+
+</div>
+
+<header>
+
+<div class="logo">
+N<span>Ø</span>VRA SH<span>Ø</span>P
+</div>
+
+<nav id="menu">
+
+<a href="#inicio">Inicio</a>
+
+<a href="#productos">Productos</a>
+
+<a href="#categorias">Categorías</a>
+
+<a href="#ofertas">Ofertas</a>
+
+<a href="#contacto">Contacto</a>
+
+</nav>
+
+<div class="rightMenu">
+
+<button class="cartBtn">
+🛒 Carrito
+</button>
+
+<div class="menuBtn" onclick="toggleMenu()">
+
+☰
+
+</div>
+
+</div>
+
+</header>
+<!-- ===================================================== -->
+<!-- PARTE 1B - HERO / BANNER PRINCIPAL -->
+<!-- Continúa justo debajo del </header> de la Parte 1A -->
+<!-- ===================================================== -->
+
+<style>
+
+/*==========================
+HERO
+==========================*/
+
+.hero{
+
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:120px 8% 80px;
+gap:60px;
+position:relative;
+overflow:hidden;
+
+}
+
+.hero::before{
+
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:#ff003c22;
+filter:blur(140px);
+border-radius:50%;
+top:-150px;
+right:-150px;
+
+}
+
+.heroInfo{
+
+flex:1;
+z-index:2;
+
+}
+
+.badge{
+
+display:inline-block;
+padding:8px 18px;
+border:1px solid #ff003c;
+border-radius:30px;
+color:#ff003c;
+font-size:14px;
+margin-bottom:20px;
+letter-spacing:2px;
+
+}
+
+.heroInfo h1{
+
+font-family:Orbitron,sans-serif;
+font-size:65px;
+line-height:1.1;
+margin-bottom:20px;
+
+}
+
+.heroInfo h1 span{
+
+color:#ff003c;
+
+}
+
+.heroInfo p{
+
+max-width:560px;
+font-size:17px;
+color:#cfcfcf;
+line-height:1.8;
+margin-bottom:35px;
+
+}
+
+.heroButtons{
+
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+
+}
+
+.btnMain{
+
+background:#ff003c;
+color:white;
+padding:15px 34px;
+border-radius:50px;
+font-size:15px;
+font-weight:600;
+transition:.35s;
+
+}
+
+.btnMain:hover{
+
+transform:translateY(-5px);
+box-shadow:0 0 30px #ff003c;
+
+}
+
+.btnSecond{
+
+background:transparent;
+border:2px solid white;
+padding:15px 34px;
+border-radius:50px;
+color:white;
+font-weight:600;
+transition:.35s;
+
+}
+
+.btnSecond:hover{
+
+background:white;
+color:black;
+
+}
+
+.heroImage{
+
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+z-index:2;
+
+}
+
+.heroCard{
+
+width:420px;
+height:500px;
+border-radius:35px;
+background:linear-gradient(145deg,#111,#1a1a1a);
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+overflow:hidden;
+box-shadow:0 0 60px rgba(255,0,60,.15);
+
+}
+
+.heroCard::before{
+
+content:"";
+position:absolute;
+width:260px;
+height:260px;
+background:#ff003c55;
+filter:blur(100px);
+
+}
+
+.heroCard h2{
+
+font-size:90px;
+font-family:Orbitron,sans-serif;
+color:white;
+z-index:2;
+letter-spacing:10px;
+
+}
+
+.heroCard h2 span{
+
+color:#ff003c;
+
+}
+
+.floating{
+
+position:absolute;
+padding:12px 20px;
+background:#121212;
+border:1px solid #2d2d2d;
+border-radius:18px;
+font-size:14px;
+backdrop-filter:blur(10px);
+
+}
+
+.f1{
+
+top:40px;
+left:-30px;
+
+}
+
+.f2{
+
+bottom:40px;
+right:-30px;
+
+}
+
+.stats{
+
+margin-top:60px;
+display:flex;
+gap:50px;
+flex-wrap:wrap;
+
+}
+
+.stat h3{
+
+font-size:34px;
+color:#ff003c;
+
+}
+
+.stat p{
+
+margin-top:8px;
+color:#bdbdbd;
+
+}
+
+@media(max-width:1000px){
+
+.hero{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+.heroInfo p{
+
+margin:auto;
+margin-bottom:35px;
+
+}
+
+.heroButtons{
+
+justify-content:center;
+
+}
+
+.stats{
+
+justify-content:center;
+
+}
+
+.heroCard{
+
+width:330px;
+height:400px;
+
+}
+
+.heroInfo h1{
+
+font-size:48px;
+
+}
+
+.heroCard h2{
+
+font-size:65px;
+
+}
+
+}
+
+</style>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="inicio">
+
+<div class="heroInfo">
+
+<div class="badge">
+NUEVA COLECCIÓN 2026
+</div>
+
+<h1>
+
+VISTE EL
+<span>STYLE</span>
+CON
+<span>NØVRA.</span>
+
+</h1>
+
+<p>
+
+Pille la mejor ropita para armar la mejor pinta con NØVRA SHOP.<br>
+
+Lleve el combo o arme su juego por separado, usted escoge parce.<br>
+
+Si quiere saber más o comprar, meta al carrito la prenda que le gustó y de una 
+lo mandamos con uno de nuestros socios.
+
+</p>
+
+<div class="heroButtons">
+
+<a href="#productos">
+<button class="btnMain">
+Comprar ahora
+</button>
+</a>
+
+<a href="#categorias">
+<button class="btnSecond">
+Explorar
+</button>
+</a>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>100%</h3>
+
+<p>Confiables</p>
+
+</div>
+
+<div class="stat">
+
+<h3>100%</h3>
+
+<p>Entregas Personales</p>
+
+</div>
+
+<div class="stat">
+
+<h3>+ 4.8★</h3>
+
+<p>Calificación</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="heroImage">
+
+<div class="heroCard">
+
+<h2>
+N<span>Ø</span>
+</h2>
+
+<div class="floating f1">
+
+🔥 Premium Quality
+
+</div>
+
+<div class="floating f2">
+
+⚡ Style NØVRA
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- PARTE 2 - CATEGORÍAS + PRODUCTOS -->
+<!-- Pegar debajo de la Parte 1B -->
+<!-- ===================================================== -->
+
+<style>
+
+/*==========================
+CATEGORÍAS
+==========================*/
+
+.categories{
+
+padding:90px 8%;
+background:#090909;
+
+}
+
+.sectionTitle{
+
+text-align:center;
+font-family:Orbitron,sans-serif;
+font-size:42px;
+margin-bottom:15px;
+
+}
+
+.sectionTitle span{
+
+color:#ff003c;
+
+}
+
+.sectionText{
+
+text-align:center;
+color:#bdbdbd;
+max-width:650px;
+margin:0 auto 50px;
+
+}
+
+.categoryGrid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+
+}
+
+.categoryCard{
+
+background:#111;
+border:1px solid #222;
+border-radius:20px;
+padding:35px 25px;
+text-align:center;
+transition:.35s;
+
+}
+
+.categoryCard:hover{
+
+transform:translateY(-8px);
+border-color:#ff003c;
+box-shadow:0 0 25px rgba(255,0,60,.25);
+
+}
+
+.categoryIcon{
+
+font-size:48px;
+margin-bottom:18px;
+
+}
+
+.categoryCard h3{
+
+margin-bottom:10px;
+
+}
+
+.categoryCard p{
+
+color:#bdbdbd;
+font-size:14px;
+line-height:1.6;
+
+}
+
+/*==========================
+PRODUCTOS
+==========================*/
+
+.products{
+
+padding:90px 8%;
+background:#050505;
+
+}
+
+.productGrid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+
+}
+
+.productCard{
+
+background:#111;
+border:1px solid #222;
+border-radius:22px;
+overflow:hidden;
+transition:.35s;
+position:relative;
+
+}
+
+.productCard:hover{
+
+transform:translateY(-8px);
+border-color:#ff003c;
+box-shadow:0 0 30px rgba(255,0,60,.22);
+
+}
+
+.productBadge{
+
+position:absolute;
+top:15px;
+left:15px;
+background:#ff003c;
+padding:6px 14px;
+border-radius:30px;
+font-size:12px;
+font-weight:600;
+z-index:5;
+
+}
+
+.productImage{
+
+height:270px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#171717,#0c0c0c);
+font-size:85px;
+
+}
+
+.productInfo{
+
+padding:22px;
+
+}
+
+.productInfo h3{
+
+margin-bottom:10px;
+
+}
+
+.productInfo p{
+
+color:#bdbdbd;
+font-size:14px;
+line-height:1.6;
+margin-bottom:18px;
+
+}
+
+.price{
+
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:20px;
+
+}
+
+.newPrice{
+
+color:#ff003c;
+font-size:22px;
+font-weight:700;
+
+}
+
+.oldPrice{
+
+color:#666;
+text-decoration:line-through;
+
+}
+
+.buyButton{
+
+width:100%;
+padding:14px;
+background:#ff003c;
+color:white;
+border-radius:12px;
+font-weight:600;
+transition:.3s;
+
+}
+
+.buyButton:hover{
+
+background:#ff1d52;
+
+}
+
+</style>
+
+<!-- ================= CATEGORÍAS ================= -->
+
+<section class="categories" id="categorias">
+
+<h2 class="sectionTitle">
+Explora <span>Categorías</span>
+</h2>
+
+<p class="sectionText">
+Pille la ropa y los accesorios más una chimba para que arme la repinta <br>
+y no solo robe miradas en clase.
+</p>
+
+<div class="categoryGrid">
+
+<div class="categoryCard">
+
+<div class="categoryIcon">👕</div>
+
+<h3>Playeras</h3>
+
+<p>
+[CBTIS29] <br><br>
+Camisa de Cuello Gala/Formal.<br><br>
+
+[BÁSQUETBOL] <br><br>
+Playeras de Celtics, Lakers, Raptors y Warriors.<br><br>
+
+[FÚTBOL] <br><br>
+Playeras de Manchester United, AC Milan y PSG.
+</p>
+
+</div>
+
+<div class="categoryCard">
+
+<div class="categoryIcon">🧥</div>
+
+<h3>Sudaderas</h3>
+
+<p>
+[CECYTEM] <br><br>
+Suéter Deportivo 
+(Azul marino).<br><br>
+
+[CBTIS29] <br><br>
+Suéter Deportivo 
+(Guinda).<br><br>
+
+[Proximamente más cosas duras].
+</p>
+
+</div>
+
+<div class="categoryCard">
+
+<div class="categoryIcon">👖</div>
+
+<h3>Pantalones</h3>
+
+<p>
+[CECYTEM] <br><br>
+Pantalón Deportivo 
+(Azul marino).<br><br>
+
+[CBTIS29] <br><br>
+Pantalón Deportivo 
+(Guinda).
+</p>
+
+</div>
+
+<div class="categoryCard">
+
+<div class="categoryIcon">🧢</div>
+
+<h3>Accesorios y Más</h3>
+
+<p>
+Xbox Clásica (Juegos y Controles Incluidos).<br><br>
+
+Mini Juego (+620 juegos).<br><br>
+
+Gorra Coach y Gorra Jordan Negra y Beige..<br><br>
+
+Bolsa Coach.<br><br>
+
+Parches Con Forma De Estrella. 
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= PRODUCTOS ================= -->
+
+<section class="products" id="productos">
+
+<h2 class="sectionTitle">
+Productos <span>Destacados</span>
+</h2>
+
+<p class="sectionText">
+Te vamos a mostrar la mera chuleta que tenemos aqui en NØVRA SHOP.
+</p>
+
+<div class="productGrid">
+
+<!-- Producto 1 -->
+
+<div class="productCard">
+
+<div class="productBadge">
+NUEVO
+</div>
+
+<div class="productImage">
+👕
+</div>
+
+<div class="productInfo">
+
+<h3>NØVRA Playeras</h3>
+
+<p>
+Tenemos variedad de playeras, tallas y precios.
+</p>
+
+<div class="price">
+
+<div class="newPrice">$150 (varían los precios)</div>
+
+<div class="oldPrice">$300</div>
+
+</div>
+
+<button
+class="buyButton"
+data-name="NØVRA Playeras"
+data-price="150 (varían los precios)">
+
+Agregar al carrito
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Producto 2 -->
+
+<div class="productCard">
+
+<div class="productBadge">
+MAS FAVORITOS
+</div>
+
+<div class="productImage">
+🧥
+</div>
+
+<div class="productInfo">
+
+<h3>NØVRA Sudaderas </h3>
+
+<p>
+¿Te hace falta la sudadera? Puedes comprarlas en <br>
+
+¡¡NØVRA SHOP!! <br>
+
+(Tallas limitadas)
+</p>
+
+<div class="price">
+
+<div class="newPrice">$250</div>
+
+<div class="oldPrice">$300</div>
+
+</div>
+
+<button
+class="buyButton"
+data-name="NØVRA Sudaderas"
+data-price="250">
+
+Agregar al carrito
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Producto 3 -->
+
+<div class="productCard">
+
+<div class="productBadge">
+LO MÁS PEDIDO!
+</div>
+
+<div class="productImage">
+👖
+</div>
+
+<div class="productInfo">
+
+<h3>NØVRA Pantalones</h3>
+
+<p>
+Hablemos claro, un pantalón de NØVRA con un saco negro..¡Uf! Qué gorronea de pinta le arma parcero. <br>
+No la piense tanto, parcero. Lleve el suyo antes de que se agoten !!
+</p>
+
+<div class="price">
+
+<div class="newPrice">$250</div>
+
+<div class="oldPrice">$300</div>
+
+</div>
+
+<button
+class="buyButton"
+data-name="NØVRA Pantalones"
+data-price="250">
+
+Agregar al carrito
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Producto 4 -->
+
+<div class="productCard">
+
+<div class="productBadge">
+BUENO, BONITO Y BARATO.
+</div>
+
+<div class="productImage">
+🧢
+</div>
+
+<div class="productInfo">
+
+<h3>NØVRACCESORIOS</h3>
+
+<p>
+¿Buscando una gorra que le pegue a su pinta de NØVRA? ¡Uy parce, esta es la sección que usted necesitaba!<br>
+¡Pille pues su gorra, el bolsito, los parches de estrellas o el combo completo en la mera esquina del flow: NØVRA SHOP!
+</p>
+
+<div class="price">
+
+<div class="newPrice">$150 (varían los precios)</div>
+
+<div class="oldPrice">$299</div>
+
+</div>
+
+<button
+class="buyButton"
+data-name="NØVRACCESORIOS"
+data-price="150 (varían los precios)">
+
+Agregar al carrito
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- PARTE 3 - OFERTAS, TESTIMONIOS Y CONTACTO -->
+<!-- Pegar debajo de la Parte 2 -->
+<!-- ===================================================== -->
+
+<style>
+
+/*==========================
+OFERTA ESPECIAL
+==========================*/
+
+.offer{
+
+padding:90px 8%;
+background:linear-gradient(135deg,#111,#050505);
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:50px;
+flex-wrap:wrap;
+
+}
+
+.offerInfo{
+
+flex:1;
+
+}
+
+.offerInfo h2{
+
+font-family:Orbitron,sans-serif;
+font-size:48px;
+margin-bottom:20px;
+
+}
+
+.offerInfo h2 span{
+
+color:#ff003c;
+
+}
+
+.offerInfo p{
+
+color:#bdbdbd;
+line-height:1.8;
+margin-bottom:30px;
+max-width:600px;
+
+}
+
+.offerButton{
+
+background:#ff003c;
+padding:16px 38px;
+border-radius:50px;
+color:white;
+font-weight:600;
+transition:.3s;
+
+}
+
+.offerButton:hover{
+
+transform:translateY(-5px);
+box-shadow:0 0 30px rgba(255,0,60,.4);
+
+}
+
+.offerCard{
+
+flex:1;
+min-width:300px;
+height:320px;
+border-radius:25px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(145deg,#161616,#0b0b0b);
+font-family:Orbitron,sans-serif;
+font-size:70px;
+letter-spacing:5px;
+color:white;
+box-shadow:0 0 40px rgba(255,0,60,.18);
+
+}
+
+.offerCard span{
+
+color:#ff003c;
+
+}
+
+/*==========================
+TESTIMONIOS
+==========================*/
+
+.testimonials{
+
+padding:90px 8%;
+background:#090909;
+
+}
+
+.testimonialGrid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+margin-top:50px;
+
+}
+
+.testimonial{
+
+background:#111;
+padding:30px;
+border-radius:20px;
+border:1px solid #222;
+transition:.3s;
+
+}
+
+.testimonial:hover{
+
+transform:translateY(-8px);
+border-color:#ff003c;
+
+}
+
+.stars{
+
+color:#ff003c;
+font-size:20px;
+margin-bottom:15px;
+
+}
+
+.testimonial p{
+
+color:#c9c9c9;
+line-height:1.8;
+margin-bottom:20px;
+
+}
+
+.user{
+
+font-weight:600;
+
+}
+
+/*==========================
+CONTACTO
+==========================*/
+
+.contact{
+
+padding:90px 8%;
+background:#050505;
+
+}
+
+.contactBox{
+
+max-width:750px;
+margin:auto;
+
+}
+
+.contactForm{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+margin-top:40px;
+
+}
+
+.contactForm input,
+.contactForm textarea{
+
+background:#111;
+border:1px solid #222;
+padding:16px;
+border-radius:12px;
+color:white;
+font-size:15px;
+outline:none;
+
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus{
+
+border-color:#ff003c;
+
+}
+
+.contactForm textarea{
+
+resize:none;
+height:170px;
+
+}
+
+.sendButton{
+
+background:#ff003c;
+padding:16px;
+border-radius:12px;
+font-size:16px;
+font-weight:600;
+color:white;
+transition:.3s;
+
+}
+
+.sendButton:hover{
+
+background:#ff1f54;
+
+}
+
+</style>
+
+<!-- ================= OFERTA ================= -->
+
+<section class="offer" id="ofertas">
+
+<div class="offerInfo">
+
+<h2>
+
+Hasta <span>50% OFF</span>
+
+</h2>
+
+<p>
+
+Solo por unos días, pille pues los descuentazos que soltamos en prendas seleccionadas. 
+Dele categoría a su pinta con el Flow original de NØVRA.
+
+</p>
+
+<a href="#productos">
+
+<button class="offerButton">
+
+Comprar ofertas
+
+</button>
+
+</a>
+
+</div>
+
+<div class="offerCard">
+
+N<span>Ø</span>VRA
+
+</div>
+
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+
+<section class="testimonials">
+
+<h2 class="sectionTitle">
+
+Lo que dicen <span>nuestros clientes</span>
+
+</h2>
+
+<p class="sectionText">
+
+Miles de personas ya forman parte de la comunidad NØVRA.
+
+</p>
+
+<div class="testimonialGrid">
+
+<div class="testimonial">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+
+"La calidad esta chida y el diseño destaca demasiado.
+10/10."
+
+</p>
+
+<div class="user">
+
+— Santiago Hrndz
+
+</div>
+
+</div>
+
+<div class="testimonial">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+
+"La entrega si es en personal y el conjunto me quedo muy bien."
+
+</p>
+
+<div class="user">
+
+— Daniela Castillo
+
+</div>
+
+</div>
+
+<div class="testimonial">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+
+"Mi tienda favorita de ropa. Toda esa ropita le pega una chimba al estilo."
+
+</p>
+
+<div class="user">
+
+— David Ruiz Diaz
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACTO ================= -->
+
+<section class="contact" id="contacto">
+
+<div class="contactBox">
+
+<h2 class="sectionTitle">
+
+Contácta<span>nos</span>
+
+</h2>
+
+<p class="sectionText">
+
+¿Tienes alguna duda o sugerencia? Escríbenos.
+
+</p>
+
+<form class="contactForm">
+
+<input
+type="text"
+placeholder="Nombre completo"
+required>
+
+<input
+type="email"
+placeholder="Correo electrónico"
+required>
+
+<textarea
+placeholder="Escribe tu mensaje..."
+required></textarea>
+
+<button
+class="sendButton"
+type="submit">
+
+Enviar mensaje
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- PARTE 4 - FOOTER + JAVASCRIPT + CIERRE -->
+<!-- Pegar al final de la Parte 3 -->
+<!-- ===================================================== -->
+
+<style>
+
+/* ===================================================== */
+/* CARRITO V3 - PARTE 2 (CSS) */
+/* ===================================================== */
+
+/*==========================
+OVERLAY
+==========================*/
+
+#cartOverlay{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(4px);
+opacity:0;
+visibility:hidden;
+transition:.35s;
+z-index:9998;
+
+}
+
+#cartOverlay.show{
+
+opacity:1;
+visibility:visible;
+
+}
+
+/*==========================
+PANEL DEL CARRITO
+==========================*/
+
+#cartPanel{
+
+position:fixed;
+top:0;
+right:-430px;
+width:400px;
+max-width:100%;
+height:100vh;
+background:#111;
+display:flex;
+flex-direction:column;
+transition:.4s;
+z-index:9999;
+box-shadow:-10px 0 40px rgba(0,0,0,.5);
+
+}
+
+#cartPanel.open{
+
+right:0;
+
+}
+
+/*==========================
+HEADER
+==========================*/
+
+.cartHeader{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px;
+border-bottom:1px solid #222;
+
+}
+
+.cartHeader h2{
+
+font-family:Orbitron,sans-serif;
+font-size:22px;
+
+}
+
+#closeCart{
+
+width:40px;
+height:40px;
+border-radius:50%;
+background:#1b1b1b;
+color:white;
+font-size:18px;
+transition:.3s;
+
+}
+
+#closeCart:hover{
+
+background:#ff003c;
+
+}
+
+/*==========================
+PRODUCTOS
+==========================*/
+
+#cartItems{
+
+flex:1;
+overflow-y:auto;
+padding:20px;
+
+}
+
+#cartItems::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+#cartItems::-webkit-scrollbar-thumb{
+
+background:#ff003c;
+border-radius:20px;
+
+}
+
+.cartItem{
+
+background:#181818;
+border:1px solid #262626;
+border-radius:16px;
+padding:15px;
+margin-bottom:18px;
+
+}
+
+.cartItem h3{
+
+font-size:17px;
+margin-bottom:8px;
+
+}
+
+.cartItem p{
+
+color:#ff003c;
+font-weight:700;
+margin-bottom:15px;
+
+}
+
+.removeBtn{
+
+width:100%;
+padding:12px;
+background:#ff003c;
+color:white;
+border-radius:10px;
+font-weight:600;
+transition:.3s;
+
+}
+
+.removeBtn:hover{
+
+background:#d60032;
+
+}
+
+.emptyCart{
+
+text-align:center;
+margin-top:80px;
+color:#888;
+font-size:18px;
+
+}
+
+/*==========================
+FOOTER
+==========================*/
+
+.cartFooter{
+
+padding:20px;
+border-top:1px solid #222;
+
+}
+
+.cartTotal{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
+margin-bottom:20px;
+
+}
+
+#checkoutBtn{
+
+width:100%;
+padding:15px;
+background:#ff003c;
+color:white;
+font-size:16px;
+font-weight:700;
+border-radius:12px;
+transition:.3s;
+
+}
+
+#checkoutBtn:hover{
+
+background:#ff2458;
+
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media(max-width:600px){
+
+#cartPanel{
+
+width:100%;
+
+}
+
+}
+
+/*==========================
+BOTÓN VOLVER ARRIBA
+==========================*/
+
+#topBtn{
+
+position:fixed;
+bottom:25px;
+right:25px;
+width:55px;
+height:55px;
+border-radius:50%;
+background:#ff003c;
+color:#fff;
+font-size:22px;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+opacity:0;
+visibility:hidden;
+transition:.35s;
+box-shadow:0 0 20px rgba(255,0,60,.35);
+z-index:999;
+
+}
+
+#topBtn.show{
+
+opacity:1;
+visibility:visible;
+
+}
+
+#topBtn:hover{
+
+transform:translateY(-5px);
+
+}
+
+/*==========================
+FOOTER
+==========================*/
+
+footer{
+
+background:#090909;
+border-top:1px solid #222;
+padding:60px 8% 30px;
+
+}
+
+.footerTop{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+flex-wrap:wrap;
+margin-bottom:35px;
+
+}
+
+.footerLogo{
+
+font-family:Orbitron,sans-serif;
+font-size:34px;
+font-weight:800;
+letter-spacing:4px;
+
+}
+
+.footerLogo span{
+
+color:#ff003c;
+
+}
+
+.footerText{
+
+color:#bdbdbd;
+max-width:500px;
+line-height:1.8;
+
+}
+
+.socials{
+
+display:flex;
+gap:15px;
+
+}
+
+.social{
+
+width:48px;
+height:48px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+background:#111;
+font-size:20px;
+transition:.3s;
+
+}
+
+.social:hover{
+
+background:#ff003c;
+transform:translateY(-5px);
+
+}
+
+.footerBottom{
+
+text-align:center;
+padding-top:25px;
+border-top:1px solid #1b1b1b;
+color:#8c8c8c;
+font-size:14px;
+
+}
+
+.checkoutInfo{
+
+margin-top:15px;
+font-size:13px;
+color:#9a9a9a;
+text-align:center;
+line-height:1.6;
+
+}
+
+.checkoutInfo strong{
+
+color:#25D366;
+
+}
+
+@media(max-width:768px){
+
+.footerTop{
+
+text-align:center;
+justify-content:center;
+
+}
+
+.socials{
+
+justify-content:center;
+
+}
+
+}
+
+</style>
+
+<!-- ================= BOTÓN ARRIBA ================= -->
+
+<div id="topBtn">
+↑
+</div>
+
+<!-- ================= FOOTER ================= -->
+<!-- ===================================================== -->
+<!-- CARRITO LATERAL V3 - PARTE 1 (HTML) -->
+<!-- Pegar antes del <footer> -->
+<!-- ===================================================== -->
+
+<!-- Fondo oscuro -->
+
+<div id="cartOverlay"></div>
+
+<!-- Carrito -->
+
+<aside id="cartPanel">
+
+<div class="cartHeader">
+
+<h2>
+🛒 Mi carrito
+</h2>
+
+<button id="closeCart">
+✕
+</button>
+
+</div>
+
+<div id="cartItems">
+
+<div class="emptyCart">
+
+Tu carrito está vacío.
+
+</div>
+
+</div>
+
+<div class="cartFooter">
+
+<div class="cartTotal">
+
+<span>Total</span>
+
+<strong id="cartTotal">
+$0
+</strong>
+
+</div>
+
+<button id="checkoutBtn">
+
+Pedir por WhatsApp
+
+</button>
+
+</div>
+
+</aside>
+
+<footer>
+
+<div class="footerTop">
+
+<div>
+
+<div class="footerLogo">
+
+N<span>Ø</span>VRA
+
+</div>
+
+<p class="footerText">
+
+Somo un grupo de jovenes emprendedores y no solo buscamos vender, buscamos
+expandir el estilo de NØVRA.
+
+</p>
+
+</div>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/speedfr._/" class="social">📷</a>
+
+<a href="https://www.instagram.com/speedfr._/" class="social">🎵</a>
+
+<a href="https://www.instagram.com/speedfr._/" class="social">▶</a>
+
+<a href="https://www.instagram.com/speedfr._/" class="social">💬</a>
+
+</div>
+
+</div>
+
+<div class="footerBottom">
+
+© 2026 NØVRA SHOP · Todos los derechos reservados.
+
+</div>
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* Loader */
+
+window.addEventListener("load",()=>{
+
+const loader=document.getElementById("loader");
+
+loader.style.opacity="0";
+
+loader.style.transition=".6s";
+
+setTimeout(()=>{
+
+loader.style.display="none";
+
+},600);
+
+});
+
+/* Menú responsive */
+
+function toggleMenu(){
+
+document.getElementById("menu").classList.toggle("active");
+
+}
+
+/* Cerrar menú al hacer clic */
+
+document.querySelectorAll("#menu a").forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+document.getElementById("menu").classList.remove("active");
+
+});
+
+});
+
+/* Botón volver arriba */
+
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>350){
+
+topBtn.classList.add("show");
+
+}else{
+
+topBtn.classList.remove("show");
+
+}
+
+});
+
+topBtn.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+/*==================================================
+CARRITO V3
+==================================================*/
+
+const cartBtn=document.querySelector(".cartBtn");
+const cartPanel=document.getElementById("cartPanel");
+const overlay=document.getElementById("cartOverlay");
+const closeCart=document.getElementById("closeCart");
+const cartItems=document.getElementById("cartItems");
+const totalElement=document.getElementById("cartTotal");
+
+const botones=document.querySelectorAll(".buyButton");
+
+let carrito=[];
+
+/* Abrir carrito */
+
+cartBtn.addEventListener("click",()=>{
+
+cartPanel.classList.add("open");
+overlay.classList.add("show");
+
+});
+
+/* Cerrar carrito */
+
+closeCart.addEventListener("click",cerrarCarrito);
+
+overlay.addEventListener("click",cerrarCarrito);
+
+function cerrarCarrito(){
+
+cartPanel.classList.remove("open");
+overlay.classList.remove("show");
+
+}
+
+/* Actualizar carrito */
+
+function actualizarCarrito(){
+
+cartItems.innerHTML="";
+
+if(carrito.length===0){
+
+cartItems.innerHTML=`<div class="emptyCart">
+Tu carrito está vacío.
+</div>`;
+
+totalElement.textContent="$0";
+
+cartBtn.innerHTML="🛒 Carrito";
+
+return;
+
+}
+
+let total=0;
+
+carrito.forEach((producto,index)=>{
+
+total+=producto.precio;
+
+cartItems.innerHTML+=`
+
+<div class="cartItem">
+
+<h3>${producto.nombre}</h3>
+
+<p>$${producto.precio}</p>
+
+<button
+class="removeBtn"
+onclick="eliminarProducto(${index})">
+
+Eliminar
+
+</button>
+
+</div>
+
+`;
+
+});
+
+cartBtn.innerHTML=`🛒 Carrito (${carrito.length})`;
+
+totalElement.textContent="$"+total;
+
+}
+
+/* Agregar producto */
+
+botones.forEach(boton=>{
+
+boton.addEventListener("click",()=>{
+
+const nombre=boton.dataset.name;
+
+const precio=parseInt(boton.dataset.price);
+
+const existe=carrito.find(item=>item.nombre===nombre);
+
+if(existe){
+
+alert("Ese producto ya está en tu carrito.");
+
+return;
+
+}
+
+carrito.push({
+
+nombre:nombre,
+precio:precio,
+boton:boton
+
+});
+
+boton.disabled=true;
+
+boton.textContent="✓ Agregado";
+
+boton.style.background="#16c65b";
+
+actualizarCarrito();
+
+});
+
+});
+
+/* Eliminar */
+
+function eliminarProducto(indice){
+
+const producto=carrito[indice];
+
+producto.boton.disabled=false;
+
+producto.boton.textContent="Agregar al carrito";
+
+producto.boton.style.background="#ff003c";
+
+carrito.splice(indice,1);
+
+actualizarCarrito();
+
+}
+
+/*==================================================
+FINALIZAR COMPRA POR WHATSAPP
+==================================================*/
+
+document.getElementById("checkoutBtn").addEventListener("click",()=>{
+
+if(carrito.length===0){
+
+alert("Tu carrito está vacío.");
+
+return;
+
+}
+
+let mensaje="🛍️ *NØVRA SHOP*%0A%0A";
+
+mensaje+="Hola, quiero realizar el siguiente pedido:%0A%0A";
+
+let total=0;
+
+carrito.forEach((producto)=>{
+
+mensaje+=`• ${producto.nombre} - $${producto.precio}%0A`;
+
+total+=producto.precio;
+
+});
+
+mensaje+=`%0A💰 Total: $${total}`;
+
+mensaje+="%0A%0A📸 Enviaré captura de pantalla de mi pedido.";
+
+mensaje+="%0A%0AGracias.";
+
+window.open(
+"https://wa.me/5215657591952?text="+mensaje,
+"_blank"
+);
+
+});
+
+/* Animación al aparecer */
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+
+{
+
+opacity:0,
+
+transform:"translateY(40px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0)"
+
+}
+
+],{
+
+duration:700,
+
+fill:"forwards"
+
+});
+
+observer.unobserve(entry.target);
+
+}
+
+});
+
+});
+
+document.querySelectorAll("section").forEach(section=>{
+
+observer.observe(section);
+
+});
+
+</script>
+
+</body>
+</html>
