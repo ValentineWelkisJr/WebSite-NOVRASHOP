@@ -1,4 +1,4 @@
-    - name: Enviar señal de actualización a DuckDNS
+     name: Enviar señal de actualización a DuckDNS
       env:
         DOMAIN: ${{ secrets.DUCKDNS_DOMAIN }}
         TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
